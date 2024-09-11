@@ -1,159 +1,168 @@
-//* Методы (встроеная функция)
-//* Slice 
-const user = "Alice Franko";
-
-const str = user.slice(3,5);
-
-const userLower = user.toLowerCase();
-
-// console.log(user, str, userLower);
-
-// let link = "https://my-site.com/about";
-
-// if (!link.endsWith("/")) {
-//     link += "/";
-// }
-
-// console.log(link);
-
-// let link = "https://my-site.com/about";
-// let tytyty;
-// // Если сайт НЕ заканчивается на слэш и СОДЕРЖИТ конструкцию my-site
-// if (!link.endsWith("/") && link.includes("my-site")) {
-//     tytyty = link.replace("https", "/");
-//     console.log(tytyty);
-// }
-
-// console.log(tytyty);
-
-//!--------------------ЦИКЛЫ------------------------------------
-
-//!ЦИКЛ for 
-// циклом for для змшнной i (интератора)
-// начиная от 0 (=0) до 10 (<10) на каждом шаге додавляем 1 (+1)
+//! РОЗГАЛУДЖЕННЯ (РАЗВЕТЛЕНИЕ IF ELSE)
 // console.log("before");
-// for (let i=0; i < 10; i+=1) {
 
-//     console.log(typeof i);
+// if (35>30) {
+// console.log("видно");
 // }
-
 // console.log("after");
 
+//! ТЕРНАРНИЙ ОПЕРАТОР
+//* обычная запись
+// const balance = 1000;
+// let message;
+// if (balance >=0) {
+//     message = "Positive";
+// } else {
+//     message = "Negative";
+// }
+// console.log(message);
 
-//! зависнет бразер, если цикл бесконечный
-// (10 > 0, i = 10)
-// (11 > 0, i = 12) и т.д. до бесконечности...
-// for (let i = 10; i >= 0; i+=1) {
+//* запись с помощью тернарного оператора
+// const balance = 1000;
+// //всегда const     условие что будет?  если тру   если фалсе
+//  const message = balance >= 0 ? "Positive" : "Negative";
 
-// console.log(i);
+// console.log(message);
+
+//* Напиши скрипт для отображения годин и хвилин у консоли браузера у формати рядка.
+//* Якщо значення зминной minutes доривнюэ = 0, то выводь рядок без хвилин 14г.
+
+// const hours = 14;
+// const minutes = 26;
+// let msg;
+
+// if(minutes > 0) {
+//     msg =`${hours} г. ${minutes} хв.`
+// } else {
+//     msg = `${hours} г.`
+// }
+// console.log(msg);
+
+//*ця ж задача через тернарный оператор
+// const hours = 14;
+// const minutes = 26;
+
+// const msg = minutes > 0 ? `${hours} г. ${minutes} хв.` : `${hours} г.`;
+// console.log(msg);
+
+/**
+ * Напиши скрипт для видображення часу до дедлайну
+ *
+ * Якщо до дедлайну 0 днів - виведи рядок "Today"
+ * Якщо до дедлайну 1 день - виведи рядок "Tomorrow"
+ * Якщо до дедлайну 2 дні - виведи рядок "Overmorrow"
+ * Якщо до дедлайну 3+ днів - виведи рядок "Date in the future"
+ */
+// const dedLine = 1;
+
+// if(dedLine === 0) {
+//     console.log("Today");
+// } else if(dedLine === 1) {
+//     console.log("Tomorrow");
+// } else if(dedLine === 2) {
+//     console.log("Overmorrow");
+// } else {
+//     console.log("Date in the future");
 // }
 
-//* Вывести каждую букву по одной в консоль!!!
-// const lalala = "world";
 
-// for(let i = 0; i < lalala.length; i+=1) {
-    
-//     //если надо прервать на 3м символе
-//     if (i === 3) {
+/**
+ * Виконай рефакторинг коду задачі використовуючи switch.
+ *
+ * Якщо до дедлайну 0 днів - виведи рядок "Today"
+ * Якщо до дедлайну 1 день - виведи рядок "Tomorrow"
+ * Якщо до дедлайну 2 дні - виведи рядок "Overmorrow"
+ * Якщо до дедлайну 3+ днів - виведи рядок "Date in the future"
+ */
+
+// const deadline = 1;
+
+// switch(deadline) {
+//     case 0:
+//         console.log("Today");
 //         break;
-//     }
-//     console.log(lalala[i]);
-// }
-//* Инкремент та декремент (префиксный та постфиксный)
-// let a = 10;
-// const b = --a;
-
-// console.log("a", a);
-// console.log("b",b);
-
-//! ЦИКЛ while
-
-// let counter = 0;
-// while(counter < 5) {
-//     console.log(counter);
-//     counter +=1;
+//     case 1:
+//         console.log("Tomorrow");
+//         break;
+//     case 2:
+//         console.log("Overmorrow");
+//         break;
+//     default:
+//         console.log("Date in the future");
 // }
 
-//!ЦИКЛ do while (навить якщо умова хибна он отработает 1 раз)
-// let counter = 20;
-// do {
-//     console.log(counter);
-//     counter++;
-// }
-// while(counter <10);
+/*
+ * Напиши скрипт выбора опції доставки товару.
+ * Опция зберігається у змінній option: 1 - самовывоз, 2 - курьер, 3 - пошта
+ *
+ * У змінну message записати повідомлення залежно від опції.
+ * - 'Ви зможете забрати товар завтра з 12:00 у нашому офісі'
+ * - 'Курьер доставить замовлення завтра з 9:00 до 18:00'
+ * - 'Посилка буде відправленна сьогодні'
+ * - 'Вам передзвонить менеджер'
+ */
 
-//*Задача: Напишить цикл for, який виводить в консоль браузера числа за зростанням от а до b
-//* Але тильки якщо число кратне 5
+// const option = 3;
+// let message;
 
-// const a = 20;
-// const b = 100;
-
-// for(let i = a; i <= b; i++) {
-
-//     //если остаток от деления на 5 = 0, т.е если ! (НЕ) 0(false)
-//     if(!(i % 5)) {
-//         console.log(i);
-//     }
-// }
-
-//2ой вариант записиconst a = 20;
-// const a = 20;
-// const b = 100;
-
-// for(let i = a; i <= b; i++) {
-// //если отаток от деления i на 5 true (сурово равен нолю)
-//     if(i % 5 === 0) {
-//         console.log(i);
-//     }
+// switch(option) {
+//     case 1:
+//         message = "Ви зможете забрати товар завтра з 12:00 у нашому офісі";
+//         break;
+//     case 2: 
+//         message = "Курьер доставить замовлення завтра з 9:00 до 18:00";
+//         break;
+//     case 3: 
+//         message = "Посилка буде відправленна сьогодні";
+//         break;
+//     default:
+//         message = "Вам передзвонить менеджер";
 // }
 
-//*Задача: Напиши скрипт, который подсчитывает сумму всех ПАРНЫХ чисел, 
-//*которые входят в диапазон чисел от min до max
+// console.log(message);
 
-// const min = 0;
-// const max = 5;
 
-// let total = 0;
+//! оператор && 
+// если 2 true повертаэ последнее
+// если видит false повертаэ перше побачене
 
-// for(let i = min; i <= max; i++) {
-//     if(i % 2 === 0) {
-//         total += i;
-//     }
+// console.log(undefined && null);
+//! оператор ||
 
+// console.log(4 || 5);
+// console.log(null || 6);
+// console.log(6 || null);
+
+
+/*
+ * Напиши скрипт перевірки підписки користувача при доступі до контента
+ * - Є три типа підписки: free, pro і vip.
+ * - Отримати доступ можуть тільки користувачі pro і vip
+ */
+
+// const sub = "pro";
+// let canConnect;
+
+// if(sub === "pro" || sub === "vip") {
+//     canConnect = true;
+// } else {
+//     canConnect = false;
 // }
-// console.log(total);
 
-//НЕ ПАРНЫЕ откинуть (мозголомка)
-// const min = 0;
-// const max = 5;
+// console.log("can connect", canConnect);
 
-// let total = 0;
+// через тернарний оператор
+// const sub = "pro";
+// const canConnect = sub === "pro" || sub === "vip";
 
-// for(let i = min; i <= max; i++) {
-//     if(i % 2 !== 0) {
-//         console.log(i);
-//         continue;
-       
-//     }
-//     //  total += i;
-//     // console.log("after", i);
-    
-// }
-// console.log(total);
+// console.log("can connect", canConnect);
 
 
-//*Задача: Перевырити чи рядок меньше або доривнюэ длине maxLength (максимальное значение)
-// Если меньше или равен -> возвращает весь рядок
-// Если больше -> обрезает и добавляет ...
 
-function formatMessage(message, maxLength) {
-    if (message.length <= maxLength) {
-        return message;
-        
-    } else {
-        return message.slice(0, maxLength) + "...";
-        
-    }
-}
-
-console.log(formatMessage("Lorem ipsum dolor sit amet", 15));
+/*
+ * Напиши скрипт, який перевіряє можливість відкрити чат з користувачем.
+ * Для цього, користувач має бути:
+ * - другом
+ * - онлайн
+ * - без режима не турбувати
+ */
