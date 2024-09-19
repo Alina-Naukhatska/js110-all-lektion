@@ -186,7 +186,7 @@
 // console.log(result);
 
 
-//! ------------------------------------ 4
+//! --------------             БАНКОВСКИЕ ТРАНЗАКЦИИ             ---------------------- 4
 
 /*
  * Типів транзакцій всього два.
@@ -241,7 +241,7 @@ const Transaction = {
        */
       withdraw(amount) {
         if(this.balance < amount) {
-            console.log("недостатньо коштыв");
+            console.log("недостатньо коштiв");
             return
         } 
         this.balance -= amount;
@@ -267,7 +267,7 @@ const Transaction = {
                 return item;
         }
     }
-    return "not found";
+    return "транзакция не знайдена";
       },
     
       /*
@@ -285,16 +285,95 @@ const Transaction = {
       },
   };
     
-account.deposit(500);
-account.deposit(200);
+
+  //! ---------------------          1й МЕТОД      -------------------------------------------------------------------------
+  // создаем функцию
+  //!   createTransaction(amount, type) {
+  // создаем зминну transaction яка э объектом 
+  //          ключ: свойство  ---  id:  сумма (напр. 500)
+  //                          ---  amount: подтягивает сумму (можно написать amount: amount, можно просто amount)
+  //                          ---  type: передаем свойство предыдущего объекта, у него 2 ключа и свойства депозит и виздрау
+  //!       const transaction = { id: amount, amount, type};
+  //!       return transaction;
+  //!     },
+  console.log("1й метод", account.createTransaction(500, Transaction.DEPOSIT));
+
+
+  //! ---------------------          2й МЕТОД      -------------------------------------------------------------------------
+  //! deposit(amount) {
+  //    добавляем каждый депозит к балансу      который при вызове напр.->   account.deposit(500);  // balance (0) + 500
+  //!   this.balance += amount;
+  //    вызываем метод createTransaction, чтоб создать новую транзакцию
+  //    как с плейлистом Пети копируем тот метод в этот
+  //!   const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+  //    просто добавляем созданый объект в массив "транзактионСС" который мы создали уже
+  //!   this.transactions.push(transaction);
+  //! },
+
+  account.deposit(500);
+  account.deposit(200);
+  console.log("2й метод", account);
+
+
+  //! ---------------------          3й МЕТОД      -------------------------------------------------------------------------
+  //! withdraw(amount) {
+  //    типа депозита, только сначала проверяет баланс больше суммы снятия?
+  //!   if(this.balance < amount) {
+  //!       console.log("недостатньо коштiв");
+  //!       return
+  //!   } 
+  //!   this.balance -= amount;
+  //    вычитает с баланса сумму и создает объект методом createTransaction, со свойством type: withdraw
+  //!   const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+  //    ну и добавляет этот объект в массив
+  //!   this.transactions.push(transaction);
+  //! },
+
 account.withdraw(100);
-console.log(account.getTransactionDetails(100));
-
-console.log(account);
-console.log(account.getBalance());
-
-console.log(account.getTransactionTotal(Transaction.DEPOSIT));
-console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+account.withdraw(1000);
+console.log("3й метод", account);
 
 
+  //! ---------------------          4й МЕТОД      -------------------------------------------------------------------------
+  //    просто баланс, пишем this так как несколько объектов
+  //! getBalance() {
+  //!   return this.balance;
+  //!    },
 
+console.log("4й метод", account.getBalance());
+
+
+  //! ---------------------          5й МЕТОД      -------------------------------------------------------------------------
+//!    getTransactionDetails(id) {
+//    перебираем массив объектов с транзакциями, пишем слово this перед названием 
+//    массива, так как это метод объекта и вызываем его через посылання при выклыку
+//!     for(const item of this.transactions) {
+//    нашел => вернул, не нашел сказал, что не нашел
+//!        if(item.id === id) {
+//!             return item;
+//!       }
+//!   }
+//!     return "транзакция не знайдена";
+//!   },
+
+console.log("5й метод", account.getTransactionDetails(100));
+
+
+  //! ---------------------          6й МЕТОД      -------------------------------------------------------------------------
+  //!   getTransactionTotal(type) {
+  //    посчитать сумму транзакций депозитов и снятий (вытаскиваем данные из массива)
+  //    создаем переменную для подсчета суммы
+  //!   let sum = 0;
+  //    перебираем массив
+  //!   for(const item of this.transactions) {
+  //!       if(item.type === type) {
+  //!           sum += item.amount;
+  //!       }
+  //!   }
+  //!   return sum;
+  //    находим по типу (который передаем параметром при вызове)
+  //    возвращаем сумму
+  //! },
+
+console.log("6й метод (сумма: deposit)", account.getTransactionTotal(Transaction.DEPOSIT));
+console.log("6й метод (сумма: withdraw)", account.getTransactionTotal(Transaction.WITHDRAW));
