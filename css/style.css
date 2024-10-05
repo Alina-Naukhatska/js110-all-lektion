@@ -71,3 +71,47 @@ body {
     margin-left: 40px;
   }
   
+  .js-click {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.js-box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-top: 10px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Ширина формы */
+  margin: 0 auto; /* Центрирование формы на странице */
+}
+
+.form-input,
+.form-textarea {
+  margin-bottom: 10px; /* Отступ между элементами */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%; /* Поля будут занимать всю ширину формы */
+  box-sizing: border-box; /* Учитывать padding в ширине элемента */
+}
+
+.form-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.form-button:hover {
+  background-color: #45a049;
+}
